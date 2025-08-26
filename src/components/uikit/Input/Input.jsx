@@ -1,3 +1,5 @@
-import MuiInput from "@mui/material/Input";
+import MuiTextField from "@mui/material/TextField";
 
-export const Input = () => <MuiInput />;
+export const Input = ({ label, size = "small" }) => (
+  <MuiTextField label={label} size={size} />
+);

@@ -1,8 +1,8 @@
-import "./globals.css";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
 import { Roboto } from "next/font/google";
 import theme from "@/theme";
-import { ThemeProvider } from "@mui/material";
+import { CssBaseline, ThemeProvider } from "@mui/material";
+import { GlobalStyles } from "@/components/uikit/GlobalStyles/GlobalStyles";
 
 export const metadata = {
   title: "Create Next App",
@@ -21,7 +21,11 @@ export default function RootLayout({ children }) {
     <html lang="en" className={roboto.variable}>
       <body>
         <ThemeProvider theme={theme}>
-          <AppRouterCacheProvider>{children}</AppRouterCacheProvider>
+          <AppRouterCacheProvider>
+            <CssBaseline />
+            <GlobalStyles />
+            {children}
+          </AppRouterCacheProvider>
         </ThemeProvider>
       </body>
     </html>

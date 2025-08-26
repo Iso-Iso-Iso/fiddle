@@ -1,0 +1,17 @@
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+  database:
+    image: mysql/mysql-server
+    ports:
+      - "3306:3306"
+    volumes:
+      - database-data:/var/lib/mysql
+
+volumes:
+  database-data:
