@@ -13,13 +13,8 @@ export const FormWrapper = styled(Box)(({ theme }) => ({
   justifyContent: "space-between",
 }));
 
-export const ContentWrapper = styled(Box)(({ theme }) => ({
+export const Inputs = styled(Box)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(2),
-}));
-
-export const ButtonsWrapper = styled(Box)(({ theme }) => ({
-  display: "flex",
-  gap: theme.spacing(1),
 }));
