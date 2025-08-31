@@ -1,6 +1,7 @@
 model Users {
-  id        String @id() @default(cuid())
+  id        String @id @default(cuid())
   email     String @unique
   firstName String
   lastName  String
+  password  String
 }

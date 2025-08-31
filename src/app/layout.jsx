@@ -1,4 +1,4 @@
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v13-appRouter";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import { Roboto } from "next/font/google";
 import theme from "@/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
@@ -21,7 +21,7 @@ export default function RootLayout({ children }) {
     <html lang="en" className={roboto.variable}>
       <body>
         <ThemeProvider theme={theme}>
-          <AppRouterCacheProvider>
+          <AppRouterCacheProvider options={{ enableCssLayer: true }}>
             <CssBaseline />
             <GlobalStyles />
             {children}

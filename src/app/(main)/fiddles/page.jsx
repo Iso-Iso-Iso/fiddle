@@ -1,8 +1,10 @@
 import React from "react";
-import { ProposalItem } from "@/app/fiddles/components/ProposalItem/ProposalItem";
+import { ProposalItem } from "@/app/(main)/fiddles/components/ProposalItem/ProposalItem";
 import { Container } from "@/components/uikit/Container/Container";
-import { PageContent, SideBar } from "./page.styles";
+import { PageContent, SideBar, SidebarProfile } from "./page.styles";
 import { Box } from "@mui/material";
+import { Avatar } from "@/components/uikit/Avatar/Avatar";
+import { Typography } from "@/components/uikit/Typography/Typography";
 
 const mock = [
   {
@@ -79,16 +81,22 @@ const mock = [
 
 const Page = () => {
   return (
-    <Container>
-      <PageContent>
-        <Box>
-          {mock.map((item) => (
-            <ProposalItem key={item.id} proposal={item} />
-          ))}
-        </Box>
-        <SideBar></SideBar>
-      </PageContent>
-    </Container>
+    <PageContent>
+      <Box>
+        {mock.map((item) => (
+          <ProposalItem key={item.id} proposal={item} />
+        ))}
+      </Box>
+      <SideBar>
+        <SidebarProfile>
+          <Avatar text="OI" />
+          <Box>
+            <Typography text="Oleg I." />
+            <Typography text="Front-end engeneer" />
+          </Box>
+        </SidebarProfile>
+      </SideBar>
+    </PageContent>
   );
 };
 

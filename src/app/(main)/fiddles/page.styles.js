@@ -14,5 +14,13 @@ export const SideBar = styled(Box)(({ theme }) => ({
   background: theme.palette.grey[100],
   borderRadius: theme.shape.borderRadius,
   position: "sticky",
-  top: theme.spacing(2),
+  top: 80,
+  padding: theme.spacing(1),
+}));
+
+export const SidebarProfile = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  gap: theme.spacing(2),
 }));
