@@ -1,0 +1,5 @@
+model Fiddles {
+  id      String @id @default(cuid())
+  name    String
+  content String @db.Text
+}

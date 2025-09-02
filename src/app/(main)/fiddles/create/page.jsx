@@ -1,5 +1,5 @@
 import React from "react";
-import { FiddleForm } from "@/components/FiddleForm/FiddleForm";
+import { FiddleForm } from "@/app/(main)/fiddles/create/components/FiddleForm/FiddleForm";
 import { createFiddle } from "@/services/fiddle/createFiddle";
 
 const Page = async () => {

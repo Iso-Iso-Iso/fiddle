@@ -1,9 +1,9 @@
 import React from "react";
-import { FiddleForm } from "@/components/FiddleForm/FiddleForm";
-import { updateFiddle } from "@/services/fiddle/updateFiddle";
+import { FiddleForm } from "@/app/(main)/fiddles/create/components/FiddleForm/FiddleForm";
+import { updateFiddleById } from "@/services/fiddle/updateFiddleById";
 
 const Page = () => {
-  return <FiddleForm onSubmit={updateFiddle} />;
+  return <FiddleForm onSubmit={updateFiddleById} />;
 };
 
 export default Page;

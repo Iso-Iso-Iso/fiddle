@@ -1,7 +1,7 @@
 "use server";
 
-import { prisma } from "@/prisma/prisma";
+import { prismaClient } from "@/prisma/prisma";
 
-export const createFiddle = async () => {
-  console.log("TEST");
+export const createFiddle = async (fiddle) => {
+  return prismaClient.fiddles.create({ data: fiddle });
 };
