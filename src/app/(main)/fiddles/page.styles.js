@@ -24,3 +24,7 @@ export const SidebarProfile = styled(Box)(({ theme }) => ({
   alignItems: "center",
   gap: theme.spacing(2),
 }));
+
+export const FiddleWrapper = styled(Box)(({ theme }) => ({
+  flex: 1,
+}));

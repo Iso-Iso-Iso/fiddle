@@ -23,4 +23,4 @@ const handle = async (state) => {
   redirect("/fiddles");
 };
 
-export const signup = withValidateSchemaAction(handle, signupSchema);
+export const signupUserAction = withValidateSchemaAction(handle, signupSchema);

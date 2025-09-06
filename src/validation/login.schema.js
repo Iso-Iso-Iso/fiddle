@@ -7,3 +7,5 @@ export const loginSchema = v.object({
 });
 
 export const loginSchemaResolver = valibotResolver(loginSchema);
+
+export const loginDefaultValues = { email: "", password: "" };

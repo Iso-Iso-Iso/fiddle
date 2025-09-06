@@ -17,3 +17,9 @@ export const CreatorWrapper = styled(Box)(({ theme }) => ({
   gap: theme.spacing(1),
 }));
 
+export const Heading = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+  gap: theme.spacing(1),
+}));

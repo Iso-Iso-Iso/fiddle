@@ -2,20 +2,20 @@
 import React, { useState } from "react";
 import { Editable, Slate, withReact } from "slate-react";
 import { createEditor } from "slate";
+import { useController } from "react-hook-form";
 
-const initialValue = [
-  {
-    type: "paragraph",
-    children: [{ text: "" }],
-  },
-];
-
-export const TextEditor = () => {
+export const TextEditor = ({ control, name }) => {
   const [editor] = useState(() => withReact(createEditor()));
+  const {
+    field: { value, onChange },
+  } = useController({
+    control,
+    name,
+  });
 
   return (
     <div>
-      <Slate editor={editor} initialValue={initialValue}>
+      <Slate editor={editor} onChange={onChange} initialValue={value}>
         <Editable />
       </Slate>
     </div>

@@ -1,101 +1,44 @@
 import React from "react";
-import { ProposalItem } from "@/app/(main)/fiddles/components/ProposalItem/ProposalItem";
-import { Container } from "@/components/uikit/Container/Container";
-import { PageContent, SideBar, SidebarProfile } from "./page.styles";
+import { FiddleItem } from "@/app/(main)/fiddles/components/FiddleItem/FiddleItem";
+
+import {
+  FiddleWrapper,
+  PageContent,
+  SideBar,
+  SidebarProfile,
+} from "./page.styles";
 import { Box } from "@mui/material";
 import { Avatar } from "@/components/uikit/Avatar/Avatar";
 import { Typography } from "@/components/uikit/Typography/Typography";
+import { getFiddles } from "@/services/fiddle/getFiddles";
+import { getAuthorizedUser } from "@/services/users/getAuthorizedUser";
 
-const mock = [
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 1,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 2,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 3,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 4,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 5,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 6,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 7,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 8,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 9,
-  },
-  {
-    title: "Test",
-    content:
-      "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a ty",
-    creator: { firstName: "John", lastName: "Doe" },
-    id: 10,
-  },
-];
+const Page = async () => {
+  const fiddles = await getFiddles();
+  const user = await getAuthorizedUser();
 
-const Page = () => {
   return (
     <PageContent>
-      <Box>
-        {mock.map((item) => (
-          <ProposalItem key={item.id} proposal={item} />
+      <FiddleWrapper>
+        {fiddles.map((item) => (
+          <FiddleItem
+            key={item.id}
+            fiddle={item}
+            isEditable={item.user.id === user?.id}
+          />
         ))}
-      </Box>
-      <SideBar>
-        <SidebarProfile>
-          <Avatar text="OI" />
-          <Box>
-            <Typography text="Oleg I." />
-            <Typography text="Front-end engeneer" />
-          </Box>
-        </SidebarProfile>
-      </SideBar>
+      </FiddleWrapper>
+      {user && (
+        <SideBar>
+          <SidebarProfile>
+            <Avatar text={`${user.firstName[0]}${user.lastName[0]}`} />
+            <Box>
+              <Typography text={`${user.firstName}`} />
+              <Typography text="Front-end engeneer" />
+            </Box>
+          </SidebarProfile>
+        </SideBar>
+      )}
     </PageContent>
   );
 };

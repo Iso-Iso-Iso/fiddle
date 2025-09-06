@@ -19,3 +19,10 @@ const passwordStepSchema = v.pick(signupSchema, ["password"]);
 export const generalStepResolver = valibotResolver(generalStepSchema);
 export const passwordStepResolver = valibotResolver(passwordStepSchema);
 export const signupSchemaResolver = valibotResolver(signupSchema);
+
+export const signupDefaultValues = {
+  email: "",
+  password: "",
+  firstName: "",
+  lastName: "",
+};

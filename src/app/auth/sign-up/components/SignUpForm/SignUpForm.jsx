@@ -10,12 +10,13 @@ import { Typography } from "@/components/uikit/Typography/Typography";
 import { Stepper } from "@/components/uikit/Stepper/Stepper";
 import { GeneralInfoStep } from "@/app/auth/sign-up/components/GeneralInfoStep/GeneralInfoStep";
 import { PasswordStep } from "@/app/auth/sign-up/components/PasswordStep/PasswordStep";
-import { signup } from "@/actions/auth/signup";
+import { signupUserAction } from "@/actions/auth/signupUserAction";
 import { useForm } from "react-hook-form";
 import { RoleStep } from "@/app/auth/sign-up/components/RoleStep/RoleStep";
 import {
   generalStepResolver,
   passwordStepResolver,
+  signupDefaultValues,
   signupSchemaResolver,
 } from "@/validation/signup.schema";
 
@@ -37,11 +38,14 @@ export const SignUpForm = () => {
 
   const resolver = validationResolver[activeStep];
 
-  const { control, handleSubmit } = useForm({ resolver });
+  const { control, handleSubmit } = useForm({
+    resolver,
+    defaultValues: signupDefaultValues,
+  });
 
   const handleNext = async (data) => {
     if (steps.length === activeStep + 1) {
-      await signup(data);
+      await signupUserAction(data);
       return;
     }
     setActiveStep((prev) => prev + 1);

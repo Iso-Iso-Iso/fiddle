@@ -8,15 +8,21 @@ import {
 import { Typography } from "@/components/uikit/Typography/Typography";
 import { Button } from "@/components/uikit/Button/Button";
 import { useForm } from "react-hook-form";
-import { loginSchemaResolver } from "@/validation/login.schema";
-import { login } from "@/actions/auth/login";
+import {
+  loginDefaultValues,
+  loginSchemaResolver,
+} from "@/validation/login.schema";
+import { loginUserAction } from "@/actions/auth/loginUserAction";
 
 export const LoginForm = ({ onSubmit }) => {
-  const { control, handleSubmit } = useForm({ resolver: loginSchemaResolver });
+  const { control, handleSubmit } = useForm({
+    resolver: loginSchemaResolver,
+    defaultValues: loginDefaultValues,
+  });
   const [isPending, startTransition] = useTransition();
 
-  const handleUserLogin = () => {
-    startTransition(login);
+  const handleUserLogin = (state) => {
+    startTransition(() => loginUserAction(state));
   };
 
   return (

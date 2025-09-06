@@ -1,23 +1,40 @@
 import React from "react";
-import { HeaderWrapper, NavigationWrapper } from "@/app/(main)/layout.styles";
+import {
+  AuthButtons,
+  HeaderWrapper,
+  MenuWrapper,
+  NavigationWrapper,
+} from "@/app/(main)/layout.styles";
 import { Container } from "@mui/material";
 import { Link } from "@/components/uikit/Link/Link";
-import { getIsUserAuthorized } from "@/services/users/getIsUserAuthorized";
+import { Button } from "@/components/uikit/Button/Button";
+import { logoutUserAction } from "@/actions/auth/logoutUserAction";
+import { getAuthorizedUser } from "@/services/users/getAuthorizedUser";
 
 const Layout = async ({ children }) => {
-  const isAuthorized = await getIsUserAuthorized();
+  const authorizedUser = await getAuthorizedUser();
 
   return (
     <>
       <HeaderWrapper>
         <Container>
-          <NavigationWrapper>
-            <Link href="/" text="Home" />
-            <Link href="/fiddles" text="Fiddles" />
-            {isAuthorized && (
-              <Link href="/fiddles/create" text="Create fiddle" />
+          <MenuWrapper>
+            <NavigationWrapper>
+              <Link href="/" text="Home" />
+              <Link href="/fiddles" text="Fiddles" />
+              {authorizedUser && authorizedUser?.role === "EMPLOYER" && (
+                <Link href="/fiddles/create" text="Create fiddle" />
+              )}
+            </NavigationWrapper>
+            {authorizedUser ? (
+              <Button color="error" text="Log out" onClick={logoutUserAction} />
+            ) : (
+              <AuthButtons>
+                <Button variant="outlined" text="Login" href="/auth/login" />
+                <Button text="Sign up" href="/auth/sign-up" />
+              </AuthButtons>
             )}
-          </NavigationWrapper>
+          </MenuWrapper>
         </Container>
       </HeaderWrapper>
       <Container>{children}</Container>

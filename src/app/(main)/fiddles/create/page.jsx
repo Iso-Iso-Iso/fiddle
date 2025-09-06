@@ -1,9 +1,9 @@
 import React from "react";
 import { FiddleForm } from "@/app/(main)/fiddles/create/components/FiddleForm/FiddleForm";
-import { createFiddle } from "@/services/fiddle/createFiddle";
+import { createFiddleAction } from "@/actions/fiddles/createFiddleAction";
 
 const Page = async () => {
-  return <FiddleForm onSubmit={createFiddle} />;
+  return <FiddleForm onSubmit={createFiddleAction} />;
 };
 
 export default Page;

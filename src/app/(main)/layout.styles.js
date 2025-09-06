@@ -1,6 +1,7 @@
 "use client";
 
-import { styled } from "@mui/material";
+import { Box, styled } from "@mui/material";
+import theme from "@/theme";
 
 export const HeaderWrapper = styled("header")(({ theme }) => ({
   height: 60,
@@ -18,3 +19,15 @@ export const NavigationWrapper = styled("nav")(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(2),
 }));
+
+export const MenuWrapper = styled(Box)({
+  display: "flex",
+  justifyContent: "space-between",
+  alignItems: "center",
+});
+
+export const AuthButtons = styled(Box)({
+  display: "flex",
+  alignItems: "center",
+  gap: theme.spacing(1),
+});
