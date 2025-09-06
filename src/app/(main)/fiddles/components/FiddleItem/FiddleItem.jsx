@@ -11,12 +11,12 @@ import { IconButton } from "@/components/uikit/IconLink/IconButton";
 import Link from "next/link";
 
 export const FiddleItem = ({ fiddle, isEditable }) => {
-  const handleEdit = () => {};
-
   return (
     <ProposalItemWrapper>
       <Heading>
-        <Typography text={fiddle.name} />
+        <Link href={`/fiddles/${fiddle.id}`}>
+          <Typography text={fiddle.name} />
+        </Link>
         {isEditable && (
           <Link href={`/fiddles/${fiddle.id}/edit`}>
             <IconButton name="edit" />

@@ -6,5 +6,9 @@ export const getFiddleById = async (fiddleId) => {
     select: { user: true, name: true, id: true, content: true },
   });
 
+  if (!fiddle) {
+    return null;
+  }
+
   return { ...fiddle, content: JSON.parse(fiddle.content) };
 };

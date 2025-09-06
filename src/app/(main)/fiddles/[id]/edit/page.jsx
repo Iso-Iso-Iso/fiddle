@@ -9,7 +9,7 @@ const Page = async ({ params }) => {
   const authorizedUser = await getAuthorizedUser();
   const fiddle = await getFiddleById(params.id);
 
-  if (authorizedUser.id !== fiddle.user.id) {
+  if (authorizedUser?.id !== fiddle.user.id) {
     redirect("/404");
     return;
   }
