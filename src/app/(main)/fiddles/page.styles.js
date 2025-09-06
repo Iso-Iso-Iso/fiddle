@@ -1,10 +1,12 @@
 "use client";
 import { Box, styled } from "@mui/material";
+import theme from "@/theme";
 
-export const PageContent = styled(Box)(({ theme }) => ({
+export const Fiddles = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(2),
   paddingTop: theme.spacing(6),
+  marginBottom: theme.spacing(5),
 }));
 
 export const SideBar = styled(Box)(({ theme }) => ({
@@ -25,6 +27,12 @@ export const SidebarProfile = styled(Box)(({ theme }) => ({
   gap: theme.spacing(2),
 }));
 
-export const FiddleWrapper = styled(Box)(({ theme }) => ({
+export const FiddleWrapper = styled(Box)({
   flex: 1,
+});
+
+export const PaginationWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "center",
+  marginBottom: theme.spacing(2),
 }));
