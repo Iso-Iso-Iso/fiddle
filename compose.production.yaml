@@ -3,3 +3,14 @@ services:
     command: >
       sh -c "npm run build &&
              npm run start"
+    depends_on:
+      database:
+        condition: service_healthy
+  migrate:
+    build: .
+    command: >
+      sh -c "npx prisma generate &&
+             npx prisma migrate deploy"
+    depends_on:
+      database:
+        condition: service_healthy
