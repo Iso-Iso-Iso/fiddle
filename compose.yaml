@@ -3,10 +3,6 @@ services:
     build: .
     ports:
       - "3000:3000"
-    volumes:
-      - ./src:/app/src
-      - ./package.json:/app/package.json
-      - ./.env:/app/.env
   database:
     image: mysql/mysql-server
     ports:
