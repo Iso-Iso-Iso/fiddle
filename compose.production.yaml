@@ -1,18 +1,11 @@
 services:
   app:
     command: >
-      sh -c "npm run build &&
+      sh -c "npx prisma generate &&
+             npx prisma migrate deploy &&
+             npm run build &&
              npm run start"
     env_file: .env
-    depends_on:
-      migrate:
-        condition: service_completed_successfully
-  migrate:
-    build: .
-    env_file: .env
-    command: >
-      sh -c "npx prisma generate &&
-             npx prisma migrate deploy"
     depends_on:
       database:
         condition: service_healthy
