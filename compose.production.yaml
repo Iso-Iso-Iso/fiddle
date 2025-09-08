@@ -3,11 +3,13 @@ services:
     command: >
       sh -c "npm run build &&
              npm run start"
+    env_file: .env
     depends_on:
       database:
         condition: service_healthy
   migrate:
     build: .
+    env_file: .env
     command: >
       sh -c "npx prisma generate &&
              npx prisma migrate deploy"
