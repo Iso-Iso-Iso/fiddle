@@ -22,3 +22,5 @@ jobs:
           script: |
             cd /srv/fiddle
             git pull origin main
+            docker compose pull
+            docker compose -f compose.yaml -f compose.production.yaml up -d --force-recreate
