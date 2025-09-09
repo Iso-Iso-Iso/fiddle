@@ -8,7 +8,7 @@ export const decryptUserSession = async () => {
   const cookieStorage = await cookies();
   const encryptedSession = cookieStorage.get("session");
 
-  if (!encryptedSession) {
+  if (!encryptedSession?.value) {
     return null;
   }
 
