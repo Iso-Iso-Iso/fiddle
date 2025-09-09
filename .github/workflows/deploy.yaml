@@ -7,5 +7,8 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout branch"
+        if: ${{github.ref == 'main'}}
+        run: echo ${{github.ref}}
       - name: "Echo simple"
-        run: echo "test"
+        run: echo "test ${{github.ref}}"
