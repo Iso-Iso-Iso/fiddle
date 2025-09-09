@@ -1,6 +1,6 @@
 name: App Deployment
 on:
-  ["push", "merge"]:
+  push:
     branches:
       - main
 jobs:
