@@ -10,3 +10,4 @@ export const Input = ({ label, size = "small", control, name }) => {
     <MuiTextField label={label} size={size} value={value} onChange={onChange} />
   );
 };
+
