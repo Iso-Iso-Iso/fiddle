@@ -1,3 +1,3 @@
 export default function Home() {
-  return <>CI/CD test final</>;
+  return <>CI/CD test final 2</>;
 }
