@@ -1,6 +1,10 @@
 import React from "react";
-import MuiAvatar from "@mui/material/Avatar";
+import { AvatarCircle } from "@/components/uikit/Avatar/avatar.styles";
 
-export const Avatar = ({ text }) => {
-  return <MuiAvatar>{text}</MuiAvatar>;
+export const Avatar = ({ text, src, variant = "small" }) => {
+  return (
+    <AvatarCircle variant={variant} src={src}>
+      {text}
+    </AvatarCircle>
+  );
 };

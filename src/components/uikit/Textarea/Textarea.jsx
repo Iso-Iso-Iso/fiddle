@@ -1,18 +1,20 @@
+import React from "react";
 import MuiTextField from "@mui/material/TextField";
 import { useController } from "react-hook-form";
 
-export const Input = ({ label, size = "small", control, name }) => {
+export const Textarea = ({ label, placeholder, control, name }) => {
   const {
     field: { value, onChange },
   } = useController({ control, name });
 
   return (
     <MuiTextField
-      fullWidth
-      label={label}
-      size={size}
       value={value}
       onChange={onChange}
+      label={label}
+      rows={5}
+      placeholder={placeholder}
+      multiline
     />
   );
 };

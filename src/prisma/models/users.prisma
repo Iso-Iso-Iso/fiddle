@@ -1,11 +1,12 @@
 model Users {
-  id        String    @id @default(cuid())
-  email     String    @unique
-  firstName String
-  lastName  String
-  password  String
-  role      UserRole
-  fiddles   Fiddles[]
+  id          String    @id @default(cuid())
+  email       String    @unique
+  firstName   String
+  lastName    String
+  password    String
+  role        UserRole
+  description String?   @db.Text
+  fiddles     Fiddles[]
 }
 
 enum UserRole {

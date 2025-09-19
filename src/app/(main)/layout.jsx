@@ -25,6 +25,9 @@ const Layout = async ({ children }) => {
               {authorizedUser && authorizedUser?.role === "EMPLOYER" && (
                 <Link href="/fiddles/create" text="Create fiddle" />
               )}
+              {authorizedUser && (
+                <Link href={`/users/${authorizedUser.id}`} text="My Profile" />
+              )}
             </NavigationWrapper>
             {authorizedUser ? (
               <Button color="error" text="Log out" onClick={logoutUserAction} />

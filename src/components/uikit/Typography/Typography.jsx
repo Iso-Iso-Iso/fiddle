@@ -1,10 +1,10 @@
 import React from "react";
-import MuiTypography from "@mui/material/Typography";
+import { StyledTypography } from "./typography.styles";
 
 export const Typography = ({ variant, align, text }) => {
   return (
-    <MuiTypography variant={variant} align={align}>
+    <StyledTypography variant={variant} align={align}>
       {text}
-    </MuiTypography>
+    </StyledTypography>
   );
 };
