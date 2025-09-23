@@ -32,7 +32,6 @@ export const SettingsForm = ({ user, onSubmit }) => {
           label="Last Name"
           name={USER_FORM_FIELDS.LAST_NAME}
         />
-        <Input control={control} label="Email" name={USER_FORM_FIELDS.EMAIL} />
       </Name>
       <Textarea
         control={control}

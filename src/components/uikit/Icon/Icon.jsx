@@ -11,8 +11,8 @@ const iconMap = {
   underline: FormatUnderlinedIcon,
 };
 
-export const Icon = ({ name }) => {
+export const Icon = ({ name, size = 20 }) => {
   const IconRenderer = iconMap[name];
 
-  return <IconRenderer />;
+  return <IconRenderer sx={{ fontSize: size }} />;
 };

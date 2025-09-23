@@ -12,6 +12,33 @@ export const ProfileInfo = styled(Box)(({ theme }) => ({
 export const Name = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: theme.spacing(1),
+  alignItems: "center",
 }));
 
-export const PersonalInfo = styled(Box)({ marginRight: "auto" });
+export const PersonalInfo = styled(Box)(({ theme }) => ({
+  marginRight: "auto",
+  display: "flex",
+  flexDirection: "column",
+  gap: theme.spacing(1),
+}));
+
+export const BadgeWrapper = styled(Box)(({ theme }) => ({
+  display: "flex",
+  gap: theme.spacing(1),
+  alignItems: "center",
+}));
+
+export const PortfolioGrid = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gap: theme.spacing(3),
+  gridTemplateColumns: "repeat(3, 1fr)",
+  marginTop: theme.spacing(1),
+  marginBottom: theme.spacing(3),
+}));
+
+export const TestimonialsCard = styled(Box)(({ theme }) => ({
+  display: "grid",
+  gap: theme.spacing(3),
+  gridTemplateColumns: "repeat(3, 1fr)",
+  marginTop: theme.spacing(1),
+}));

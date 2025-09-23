@@ -1,9 +1,9 @@
 import React from "react";
 import { StyledTypography } from "./typography.styles";
 
-export const Typography = ({ variant, align, text }) => {
+export const Typography = ({ variant, align, text, typographyRef }) => {
   return (
-    <StyledTypography variant={variant} align={align}>
+    <StyledTypography ref={typographyRef} variant={variant} align={align}>
       {text}
     </StyledTypography>
   );
