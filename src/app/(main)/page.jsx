@@ -1,3 +1,11 @@
+import { MainScreen } from "./components/MainScreen/MainScreen";
+import { CategoriesGrid } from "@/app/(main)/components/CategoriesGrid/CategoriesGrid";
+
 export default function Home() {
-  return <>CI/CD test final 2</>;
+  return (
+    <>
+      <MainScreen />
+      <CategoriesGrid />
+    </>
+  );
 }

@@ -15,6 +15,7 @@ export const Textarea = ({ label, placeholder, control, name }) => {
       rows={5}
       placeholder={placeholder}
       multiline
+      fullWidth
     />
   );
 };

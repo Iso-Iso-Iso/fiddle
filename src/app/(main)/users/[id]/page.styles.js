@@ -28,13 +28,6 @@ export const BadgeWrapper = styled(Box)(({ theme }) => ({
   alignItems: "center",
 }));
 
-export const PortfolioGrid = styled(Box)(({ theme }) => ({
-  display: "grid",
-  gap: theme.spacing(3),
-  gridTemplateColumns: "repeat(3, 1fr)",
-  marginTop: theme.spacing(1),
-  marginBottom: theme.spacing(3),
-}));
 
 export const TestimonialsCard = styled(Box)(({ theme }) => ({
   display: "grid",

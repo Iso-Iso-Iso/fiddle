@@ -16,6 +16,9 @@ const variantsMap = {
     WebkitBoxOrient: "vertical",
     fontSize: "0.875rem",
   },
+  h1: {
+    fontSize: "3.25rem",
+  },
 };
 
 export const StyledTypography = styled(MuiTypography)(

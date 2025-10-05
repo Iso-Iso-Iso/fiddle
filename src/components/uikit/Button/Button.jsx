@@ -8,6 +8,7 @@ export const Button = ({
   color = "primary",
   fullWidth,
   loading,
+  size,
   href,
 }) => {
   return (
@@ -15,6 +16,7 @@ export const Button = ({
       href={href}
       variant={variant}
       color={color}
+      size={size}
       onClick={onClick}
       fullWidth={fullWidth}
       loading={loading}

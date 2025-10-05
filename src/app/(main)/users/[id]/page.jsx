@@ -8,7 +8,6 @@ import {
   BadgeWrapper,
   Name,
   PersonalInfo,
-  PortfolioGrid,
   ProfileInfo,
   TestimonialsCard,
 } from "@/app/(main)/users/[id]/page.styles";
@@ -17,14 +16,10 @@ import Link from "next/link";
 import { CollapsableDescription } from "@/app/(main)/users/[id]/components/CollapsableDescription/CollapsableDescription";
 import { Chip } from "@/components/uikit/Chip/Chip";
 import { IconButton } from "@/components/uikit/IconLink/IconButton";
-import { PortfolioCard } from "@/app/(main)/users/[id]/components/PortfolioCard/PortfolioCard";
 import { Rating } from "@/components/uikit/Rating/Rating";
 import { TestimonialCard } from "@/app/(main)/users/[id]/components/TestimonialCard/TestimonialCard";
-
-const mock =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quis dictum leo. Sed a orci eget neque euismod dictum. Mauris nisl eros, fermentum nec velit vitae, sodales suscipit nisi. Suspendisse ut felis ut ipsum facilisis vestibulum. In lacus justo, tincidunt nec viverra et, varius nec sem. Cras et massa non justo vehicula consectetur at dignissim lorem. Phasellus cursus orci ut nisl placerat, sit amet rutrum magna vestibulum. Vestibulum luctus quis odio at consectetur. Etiam ornare risus lectus, ut faucibus tellus tempor vitae. Duis pellentesque mollis augue eu aliquam. Duis porttitor diam eget nulla commodo cursus ut non elit. Quisque varius semper velit nec porta. Morbi id sem elit.\n" +
-  "\n" +
-  "In ac est a odio elementum lobortis. Nulla non nulla eu quam commodo iaculis. Phasellus blandit interdum est ac aliquet. Fusce gravida eleifend interdum. Sed ut arcu varius, suscipit orci ut, pharetra mi. Donec suscipit massa quis orci porttitor ornare. Nulla id porta libero, quis rhoncus magna. Aenean a odio diam. Integer iaculis, ipsum vitae viverra tristique, nulla dolor ultrices nibh, non mollis erat ligula vitae ligula. Nullam bibendum sapien non ex ultricies ornare. Cras iaculis nec elit eu condimentum. Vivamus placerat finibus nulla vitae consectetur. Nunc ornare tristique leo sed venenatis. Nulla ipsum sapien, mattis eget quam ut, porttitor ultricies nunc. Morbi eu sodales metus, at convallis turpis.";
+import { PortfolioGrid } from "@/app/(main)/users/[id]/components/PortfolioGrid/PortfolioGrid";
+import { getUserPortfolios } from "@/services/portfolios/getUserPortfolios";
 
 const Page = async ({ params }) => {
   const session = await decryptUserSession();
@@ -33,6 +28,8 @@ const Page = async ({ params }) => {
   if (!user) {
     return redirect("/404");
   }
+
+  const portfolios = await getUserPortfolios({ userId: user.id });
 
   const isEditable = user.id === session?.userId;
 
@@ -63,14 +60,7 @@ const Page = async ({ params }) => {
         )}
       </ProfileInfo>
       {user.description && <CollapsableDescription text={user.description} />}
-      <Typography variant="h4" text="Portfolio" />
-      <PortfolioGrid>
-        {Array(6)
-          .fill(null)
-          .map((_, i) => (
-            <PortfolioCard key={i} />
-          ))}
-      </PortfolioGrid>
+      <PortfolioGrid items={portfolios} />
       <Typography variant="h4" text="Testimonials" />
       <TestimonialsCard>
         {Array(6)

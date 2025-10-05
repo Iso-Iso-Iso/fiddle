@@ -1,0 +1,8 @@
+model Portfolios {
+  id          String @id @default(cuid())
+  name        String
+  description String @db.Text
+  image       String
+  userId      String
+  user        Users  @relation(fields: [userId], references: [id])
+}
