@@ -1,0 +1,23 @@
+services:
+  app:
+    build:
+      dockerfile: ./Dockerfile
+      context: ../../
+    ports:
+      - "3000:3000"
+    command: npm run dev
+    volumes:
+      - ./src:/app/src
+      - ./package.json:/app/package.json
+      - ./.env:/app/.env
+    env_file: .env.dev
+  database:
+    image: mysql/mysql-server
+    ports:
+      - "3306:3306"
+    volumes:
+      - database-data:/var/lib/mysql
+
+volumes:
+  database-data:
+    external: true

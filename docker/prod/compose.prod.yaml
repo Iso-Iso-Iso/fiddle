@@ -1,14 +1,19 @@
 services:
   app:
-    build: .
+    build:
+      dockerfile: ./docker/prod/Dockerfile
+      context: ../../
     ports:
       - "3000:3000"
+    env_file: .env.prod
   database:
     image: mysql/mysql-server
-    ports:
-      - "3306:3306"
     volumes:
       - database-data:/var/lib/mysql
 
 volumes:
   database-data:
+    external: true
+
+networks:
+  database:
