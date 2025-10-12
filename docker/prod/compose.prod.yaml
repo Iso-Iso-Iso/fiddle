@@ -8,12 +8,13 @@ services:
     env_file: .env.prod
   database:
     image: mysql/mysql-server
+    ports:
+      - "3306:3306"
     volumes:
       - database-data:/var/lib/mysql
 
 volumes:
   database-data:
-    external: true
 
 networks:
   database:

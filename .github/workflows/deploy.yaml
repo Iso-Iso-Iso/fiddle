@@ -4,23 +4,36 @@ on:
     branches:
       - main
 jobs:
-  deploy:
+  migrate:
+    env:
+      DATABASE_URL: ${{secrets.DATABASE_URL}}
     runs-on: ubuntu-latest
     steps:
-      - name: "Checkout branch"
-        if: ${{github.ref_name != 'main'}}
-        uses: actions/checkout@v5
+      - name: "Install packages Node.js"
+        uses: actions/setup-node@v5
         with:
-          ref: main
-      - name: "Deploy"
-        uses: appleboy/ssh-action@v1
-        with:
-          host: ${{ secrets.HOST }}
-          username: ${{secrets.HOST_USERNAME}}
-          password: ${{ secrets.HOST_PASSWORD }}
-          port: ${{ secrets.HOST_PORT }}
-          script: |
-            cd /srv/fiddle
-            git pull origin main
-            docker compose build
-            docker compose -f compose.yaml -f compose.production.yaml up -d --force-recreate
+          node-version: 22
+      - name: "Install packages"
+        run: npm ci
+      - name: "Migrate database"
+        run: npx prisma migrate deploy
+#  deploy:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: "Checkout branch"
+#        if: ${{github.ref_name != 'main'}}
+#        uses: actions/checkout@v5
+#        with:
+#          ref: main
+#      - name: "Deploy"
+#        uses: appleboy/ssh-action@v1
+#        with:
+#          host: ${{ secrets.HOST }}
+#          username: ${{secrets.HOST_USERNAME}}
+#          password: ${{ secrets.HOST_PASSWORD }}
+#          port: ${{ secrets.HOST_PORT }}
+#          script: |
+#            cd /srv/fiddle
+#            git pull origin main
+#            docker compose build
+#            docker compose -f compose.yaml -f compose.production.yaml up -d --force-recreate
