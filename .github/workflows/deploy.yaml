@@ -9,6 +9,11 @@ jobs:
       DATABASE_URL: ${{secrets.DATABASE_URL}}
     runs-on: ubuntu-latest
     steps:
+      - name: "Checkout branch"
+        if: ${{github.ref_name != 'main'}}
+        uses: actions/checkout@v5
+        with:
+          ref: main
       - name: "Install packages Node.js"
         uses: actions/setup-node@v5
         with:
