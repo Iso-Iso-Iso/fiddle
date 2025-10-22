@@ -5,6 +5,9 @@ import { TextEditor } from "@/components/TextEditor/TextEditor";
 import { Button } from "@/components/uikit/Button/Button";
 import { useForm } from "react-hook-form";
 import { fiddleResolver, getDefaultValues } from "@/validation/fiddle.schema";
+import { FormWrapper } from "@/app/(main)/fiddles/create/components/FiddleForm/fiddleForm.styles";
+import { FileUpload } from "@/components/uikit/FileUpload/FileUpload";
+import { uploadFileOnBucket } from "@/utils/uploadFileOnBucket";
 
 export const FiddleForm = ({ onSubmit, fiddle }) => {
   const { control, handleSubmit } = useForm({
@@ -12,21 +15,26 @@ export const FiddleForm = ({ onSubmit, fiddle }) => {
     defaultValues: getDefaultValues(fiddle),
   });
 
-  const handleFiddleCreate = (state) => {
+  const handleFiddleCreate = async (state) => {
+    const fileUploadedSlugs = await Promise.all(
+      state.files.map((item) => uploadFileOnBucket(item.file))
+    );
+    console.log(fileUploadedSlugs);
     if (fiddle) {
-      onSubmit({ ...state, id: fiddle.id });
+      onSubmit({ ...state, id: fiddle.id, images: fileUploadedSlugs });
       return;
     }
-    onSubmit(state);
+    onSubmit({ ...state, images: fileUploadedSlugs });
   };
 
   return (
-    <div>
+    <FormWrapper>
       <Input control={control} name="name" />
       <TextEditor control={control} name="content" />
+      <FileUpload control={control} name="files" multiple />
       <div>
         <Button text="Save" onClick={handleSubmit(handleFiddleCreate)} />
       </div>
-    </div>
+    </FormWrapper>
   );
 };

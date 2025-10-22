@@ -16,11 +16,11 @@ export const storeFileToStorage = async (file) => {
   const res = await client.send(
     new PutObjectCommand({
       Bucket: "fiddle-notes-alpha",
-      Key: `images/${fileName}`,
+      Key: `static/${fileName}`,
       Body: buffer,
       ContentType: file.type,
     })
   );
 
-  return { slug: `images/${fileName}` };
+  return { slug: `static/${fileName}` };
 };

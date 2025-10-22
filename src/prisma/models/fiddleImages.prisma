@@ -1,0 +1,6 @@
+model FiddleImages {
+  id       String  @id @default(cuid())
+  slug     String
+  fiddleId String
+  fiddle   Fiddles @relation(fields: [fiddleId], references: [id])
+}

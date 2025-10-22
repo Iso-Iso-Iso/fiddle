@@ -5,6 +5,13 @@ import { createEditor } from "slate";
 import { useController } from "react-hook-form";
 import { EditorButton } from "@/components/TextEditor/components/EditorButton/EditorButton";
 import { Leaf } from "@/components/TextEditor/components/Leaf/Leaf";
+import {
+  ActionButtons,
+  EditableStyled,
+  EditZone,
+  Line,
+  TextEditorWrapper,
+} from "./textEditor.styles";
 
 export const TextEditor = ({ control, name }) => {
   const [editor] = useState(() => withReact(createEditor()));
@@ -16,13 +23,15 @@ export const TextEditor = ({ control, name }) => {
   });
 
   return (
-    <div>
+    <TextEditorWrapper>
       <Slate editor={editor} onChange={onChange} initialValue={value}>
-        <EditorButton editor={editor} variant="bold" />
-        <EditorButton editor={editor} variant="italic" />
-        <EditorButton editor={editor} variant="underline" />
-        <Editable renderLeaf={(props) => <Leaf {...props} />} autoFocus />
+        <ActionButtons>
+          <EditorButton editor={editor} variant="bold" />
+          <EditorButton editor={editor} variant="italic" />
+          <EditorButton editor={editor} variant="underline" />
+        </ActionButtons>
+        <EditableStyled renderLeaf={(props) => <Leaf {...props} />} autoFocus />
       </Slate>
-    </div>
+    </TextEditorWrapper>
   );
 };

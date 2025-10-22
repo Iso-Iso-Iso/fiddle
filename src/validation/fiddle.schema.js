@@ -4,11 +4,13 @@ import { valibotResolver } from "@hookform/resolvers/valibot";
 export const fiddleSchema = v.object({
   name: v.string(),
   content: v.any(),
+  files: v.any(),
 });
 
 export const fiddleActionSchema = v.object({
   ...fiddleSchema.entries,
   id: v.string(),
+  images: v.any(),
 });
 
 export const fiddleResolver = valibotResolver(fiddleSchema);

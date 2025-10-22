@@ -22,6 +22,8 @@ import { PortfolioGrid } from "@/app/(main)/users/[id]/components/PortfolioGrid/
 import { getUserPortfolios } from "@/services/portfolios/getUserPortfolios";
 
 const Page = async ({ params }) => {
+  await params;
+
   const session = await decryptUserSession();
   const user = await getUserById(params.id);
 

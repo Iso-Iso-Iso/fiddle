@@ -19,7 +19,7 @@ const handle = async (state) => {
     userId: authorizedUser.id,
   };
 
-  await createFiddle(fiddle);
+  await createFiddle(fiddle, state.images);
 };
 
 export const createFiddleAction = withValidateSchemaAction(
