@@ -13,23 +13,25 @@ import {
   portfolioDefaultValues,
   portfolioResolver,
 } from "@/validation/portfolio.schema";
+import { uploadFileOnBucket } from "@/utils/uploadFileOnBucket";
 
 export const ManagePortfolioModal = () => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit, watch } = useForm({
     resolver: portfolioResolver,
     defaultValues: portfolioDefaultValues,
   });
 
-  const handleFormSubmit = (data) => {
-    const formData = new FormData();
-    formData.append("name", data[PORTFOLIO_SCHEMA_FIELDS.NAME]);
-    formData.append("description", data[PORTFOLIO_SCHEMA_FIELDS.DESCRIPTION]);
-    formData.append("image", data[PORTFOLIO_SCHEMA_FIELDS.IMAGES][0].file);
+  const handleFormSubmit = async (data) => {
+    const imageSlugs = await Promise.all(
+      data[PORTFOLIO_SCHEMA_FIELDS.IMAGES].map((item) =>
+        uploadFileOnBucket(item.file)
+      )
+    );
 
     createUserPortfolioAction({
       name: data[PORTFOLIO_SCHEMA_FIELDS.NAME],
       description: data[PORTFOLIO_SCHEMA_FIELDS.DESCRIPTION],
-      image: data[PORTFOLIO_SCHEMA_FIELDS.IMAGES][0].file,
+      images: imageSlugs,
     });
   };
 
@@ -46,7 +48,11 @@ export const ManagePortfolioModal = () => {
           control={control}
           name={PORTFOLIO_SCHEMA_FIELDS.DESCRIPTION}
         />
-        <FileUpload control={control} name={PORTFOLIO_SCHEMA_FIELDS.IMAGES} />
+        <FileUpload
+          control={control}
+          name={PORTFOLIO_SCHEMA_FIELDS.IMAGES}
+          multiple
+        />
         <Button text="Save" onClick={handleSubmit(handleFormSubmit)} />
       </Wrapper>
     </Modal>

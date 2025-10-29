@@ -1,0 +1,6 @@
+model PortfolioImages {
+  id          String     @id @default(cuid())
+  slug        String
+  portfolioId String
+  portfolio   Portfolios @relation(fields: [portfolioId], references: [id])
+}

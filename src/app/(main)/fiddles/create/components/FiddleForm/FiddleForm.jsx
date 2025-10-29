@@ -19,7 +19,7 @@ export const FiddleForm = ({ onSubmit, fiddle }) => {
     const fileUploadedSlugs = await Promise.all(
       state.files.map((item) => uploadFileOnBucket(item.file))
     );
-    console.log(fileUploadedSlugs);
+
     if (fiddle) {
       onSubmit({ ...state, id: fiddle.id, images: fileUploadedSlugs });
       return;

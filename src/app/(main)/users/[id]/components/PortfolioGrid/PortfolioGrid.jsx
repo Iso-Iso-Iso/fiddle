@@ -32,7 +32,7 @@ export const PortfolioGrid = ({ items }) => {
               <CardMedia
                 component="img"
                 height="140"
-                image={item.image}
+                image={item.images[0]}
                 alt="green iguana"
               />
               <CardContent>

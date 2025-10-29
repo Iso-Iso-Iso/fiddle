@@ -11,7 +11,7 @@ import { useController } from "react-hook-form";
 import { Wrapper } from "./sileUpload.styles";
 import Image from "next/image";
 
-export const FileUpload = ({ control, name, multiple, upload }) => {
+export const FileUpload = ({ control, name, multiple }) => {
   const {
     field: { value, onChange },
   } = useController({ control, name, defaultValue: [] });
@@ -23,7 +23,6 @@ export const FileUpload = ({ control, name, multiple, upload }) => {
       file: item,
       url: URL.createObjectURL(item),
     }));
-
     onChange([...value, ...mapped]);
   };
 
