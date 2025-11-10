@@ -25,4 +25,5 @@ export const PersonalInfo = styled(Box)(({ theme }) => ({
 export const FiddleList = styled(Box)(({ theme }) => ({
   display: "grid",
   gridTemplateColumns: "repeat(4, 1fr)",
+  gap: theme.spacing(2),
 }));

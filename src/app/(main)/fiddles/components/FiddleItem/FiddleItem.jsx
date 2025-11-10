@@ -1,3 +1,4 @@
+"use client";
 import React from "react";
 import {
   CreatorWrapper,
@@ -9,16 +10,23 @@ import { Avatar } from "@/components/uikit/Avatar/Avatar";
 import { TextEditViewer } from "@/components/TextEditViewer/TextEditViewer";
 import { IconButton } from "@/components/uikit/IconLink/IconButton";
 import Link from "next/link";
+import { useModalActions } from "@/stores/modalStore";
+import { MODAL_NAMES } from "@/constants/modalNames";
 
 export const FiddleItem = ({ fiddle, isEditable }) => {
+  const { setActiveModal } = useModalActions();
+  const handlePropagation = (e) => e.stopPropagation();
+
   return (
-    <ProposalItemWrapper>
+    <ProposalItemWrapper
+      onClick={() => setActiveModal(MODAL_NAMES.FIDDLE_DRAWER, { fiddle })}
+    >
       <Heading>
-        <Link href={`/fiddles/${fiddle.id}`}>
+        <Link onClick={handlePropagation} href={`/fiddles/${fiddle.id}`}>
           <Typography text={fiddle.name} />
         </Link>
         {isEditable && (
-          <Link href={`/fiddles/${fiddle.id}/edit`}>
+          <Link onClick={handlePropagation} href={`/fiddles/${fiddle.id}/edit`}>
             <IconButton name="edit" />
           </Link>
         )}

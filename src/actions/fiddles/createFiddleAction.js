@@ -1,7 +1,7 @@
 "use server";
 
 import { withValidateSchemaAction } from "@/utils/withValidateSchemaAction";
-import { fiddleSchema } from "@/validation/fiddle.schema";
+import { fiddleActionSchema } from "@/validation/fiddle.schema";
 import { createFiddle } from "@/services/fiddle/createFiddle";
 import { createFailedResponse } from "@/utils/createFailedResponse";
 import { getAuthorizedUser } from "@/services/users/getAuthorizedUser";
@@ -24,5 +24,5 @@ const handle = async (state) => {
 
 export const createFiddleAction = withValidateSchemaAction(
   handle,
-  fiddleSchema
+  fiddleActionSchema
 );

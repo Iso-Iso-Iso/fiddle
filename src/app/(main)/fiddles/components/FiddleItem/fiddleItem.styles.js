@@ -9,6 +9,10 @@ export const ProposalItemWrapper = styled(Box)(({ theme }) => ({
   borderBottomStyle: "solid",
   borderColor: theme.palette.grey[200],
   padding: theme.spacing(1),
+  cursor: "pointer",
+  "&:hover": {
+    backgroundColor: theme.palette.grey[100],
+  },
 }));
 
 export const CreatorWrapper = styled(Box)(({ theme }) => ({

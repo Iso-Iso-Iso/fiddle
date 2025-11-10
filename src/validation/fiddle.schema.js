@@ -8,8 +8,8 @@ export const fiddleSchema = v.object({
 });
 
 export const fiddleActionSchema = v.object({
-  ...fiddleSchema.entries,
-  id: v.string(),
+  name: v.string(),
+  content: v.any(),
   images: v.any(),
 });
 

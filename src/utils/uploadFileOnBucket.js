@@ -11,8 +11,6 @@ export const uploadFileOnBucket = async (file) => {
   await fetch(url, {
     method: "PUT",
     body: buffer,
-  }).catch((err) => {
-    console.log(err);
   });
 
   return name;

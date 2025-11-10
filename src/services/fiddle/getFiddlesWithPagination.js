@@ -1,18 +1,21 @@
 import { prismaClient } from "@/prisma/prisma";
 
-const count = 20;
+const COUNT_PER_PAGE = 20;
 
 export const getFiddlesWithPagination = async ({ page }) => {
   const count = await prismaClient.fiddles.count();
   const res = await prismaClient.fiddles.findMany({
-    select: { user: true, id: true, content: true, name: true },
-    take: count,
-    skip: (page - 1) * count,
+    take: COUNT_PER_PAGE,
+    skip: (page - 1) * COUNT_PER_PAGE,
+    include: { user: true, images: true },
   });
 
   const fiddles = res.map((item) => ({
     ...item,
     content: JSON.parse(item.content),
+    images: item.images.map(
+      (item) => `${process.env.AWS_S3_BUCKET_URL}/${item.slug}`
+    ),
   }));
 
   const pageCount = Math.ceil(count / count);

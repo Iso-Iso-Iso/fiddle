@@ -14,7 +14,7 @@ const EXPIRATION_TIME = 3600;
 
 // TODO: env
 export const createUploadUrl = async ({ contentType }) => {
-  const name = `static/${v4()}`;
+  const name = `static/${v4()}.${contentType.split("/")[1]}`;
 
   const command = new PutObjectCommand({
     Bucket: "fiddle-notes-alpha",

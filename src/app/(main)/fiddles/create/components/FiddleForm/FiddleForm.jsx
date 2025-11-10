@@ -21,10 +21,20 @@ export const FiddleForm = ({ onSubmit, fiddle }) => {
     );
 
     if (fiddle) {
-      onSubmit({ ...state, id: fiddle.id, images: fileUploadedSlugs });
+      onSubmit({
+        name: state.name,
+        content: state.content,
+        images: fileUploadedSlugs,
+        id: fiddle.id,
+      });
       return;
     }
-    onSubmit({ ...state, images: fileUploadedSlugs });
+
+    onSubmit({
+      name: state.name,
+      content: state.content,
+      images: fileUploadedSlugs,
+    });
   };
 
   return (

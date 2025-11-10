@@ -7,9 +7,11 @@ import {
 } from "@/stores/modalStore";
 import { MODAL_NAMES } from "@/constants/modalNames";
 import { ManagePortfolioModal } from "@/components/modals/ManagePortfolioModal/ManagePortfolioModal";
+import { FiddleDrawer } from "@/components/modals/FiddleDrawer/FiddleDrawer";
 
 const modalRenderers = {
   [MODAL_NAMES.MANAGE_PORTFOLIO_MODAL]: ManagePortfolioModal,
+  [MODAL_NAMES.FIDDLE_DRAWER]: FiddleDrawer,
 };
 
 export const ModalProvider = ({ children }) => {
