@@ -1,40 +1,33 @@
 import React from "react";
-import { FiddleItem } from "@/app/(main)/fiddles/components/FiddleItem/FiddleItem";
 
-import {
-  FiddleWrapper,
-  Fiddles,
-  SideBar,
-  SidebarProfile,
-  PaginationWrapper,
-} from "./page.styles";
+import { Fiddles, SideBar, SidebarProfile } from "./page.styles";
 import { Box } from "@mui/material";
 import { Avatar } from "@/components/uikit/Avatar/Avatar";
 import { Typography } from "@/components/uikit/Typography/Typography";
-import { getFiddlesWithPagination } from "@/services/fiddle/getFiddlesWithPagination";
 import { getAuthorizedUser } from "@/services/users/getAuthorizedUser";
-import { Pagination } from "@/components/uikit/Pagination/Pagination";
+import { FiddleList } from "@/app/(main)/fiddles/components/FiddleList/FiddleList";
+import { getQueryClient } from "@/utils/getQueryClient";
+import { getFiddlesWithPagination } from "@/services/fiddle/getFiddlesWithPagination";
+import { getFiddlesQueryKey } from "@/services/fiddle/useGetFiddlesQuery";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 const Page = async ({ searchParams }) => {
+  const queryClient = getQueryClient();
+  const user = await getAuthorizedUser();
+
   const search = await searchParams;
 
-  const user = await getAuthorizedUser();
-  const { fiddles, pageCount } = await getFiddlesWithPagination({
-    page: search.page || 1,
+  const page = search.page || 1;
+
+  await queryClient.prefetchQuery({
+    queryFn: () => getFiddlesWithPagination({ page }),
+    queryKey: getFiddlesQueryKey({ page }),
   });
 
   return (
-    <>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <Fiddles>
-        <FiddleWrapper>
-          {fiddles.map((item) => (
-            <FiddleItem
-              key={item.id}
-              fiddle={item}
-              isEditable={item.user.id === user?.id}
-            />
-          ))}
-        </FiddleWrapper>
+        <FiddleList userId={user.id} />
         {user && (
           <SideBar>
             <SidebarProfile>
@@ -47,10 +40,7 @@ const Page = async ({ searchParams }) => {
           </SideBar>
         )}
       </Fiddles>
-      <PaginationWrapper>
-        <Pagination count={pageCount} />
-      </PaginationWrapper>
-    </>
+    </HydrationBoundary>
   );
 };
 

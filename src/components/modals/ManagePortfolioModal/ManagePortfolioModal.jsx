@@ -14,12 +14,15 @@ import {
   portfolioResolver,
 } from "@/validation/portfolio.schema";
 import { uploadFileOnBucket } from "@/utils/uploadFileOnBucket";
+import { useCreatePortfolioMutation } from "@/services/portfolios/useCreatePortfolioMutation";
 
 export const ManagePortfolioModal = () => {
   const { control, handleSubmit, watch } = useForm({
     resolver: portfolioResolver,
     defaultValues: portfolioDefaultValues,
   });
+
+  const { mutate: createPortfolioMutate } = useCreatePortfolioMutation();
 
   const handleFormSubmit = async (data) => {
     const imageSlugs = await Promise.all(
@@ -28,7 +31,7 @@ export const ManagePortfolioModal = () => {
       )
     );
 
-    createUserPortfolioAction({
+    createPortfolioMutate({
       name: data[PORTFOLIO_SCHEMA_FIELDS.NAME],
       description: data[PORTFOLIO_SCHEMA_FIELDS.DESCRIPTION],
       images: imageSlugs,

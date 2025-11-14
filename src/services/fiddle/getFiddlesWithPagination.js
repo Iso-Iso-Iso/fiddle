@@ -1,3 +1,4 @@
+import "server-only";
 import { prismaClient } from "@/prisma/prisma";
 
 const COUNT_PER_PAGE = 20;

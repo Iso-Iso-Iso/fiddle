@@ -4,6 +4,7 @@ import theme from "@/theme";
 import { CssBaseline, ThemeProvider } from "@mui/material";
 import { GlobalStyles } from "@/components/uikit/GlobalStyles/GlobalStyles";
 import { ModalProvider } from "@/components/ModalProvider/ModalProvider";
+import { QueryProvider } from "@/components/QueryProvider/QueryProvider";
 
 export const metadata = {
   title: "Create Next App",
@@ -23,11 +24,13 @@ export default function RootLayout({ children }) {
       <body>
         <ThemeProvider theme={theme}>
           <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-            <ModalProvider>
-              <CssBaseline />
-              <GlobalStyles />
-              {children}
-            </ModalProvider>
+            <QueryProvider>
+              <ModalProvider>
+                <CssBaseline />
+                <GlobalStyles />
+                {children}
+              </ModalProvider>
+            </QueryProvider>
           </AppRouterCacheProvider>
         </ThemeProvider>
       </body>

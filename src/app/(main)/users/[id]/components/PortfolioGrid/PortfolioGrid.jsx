@@ -10,9 +10,12 @@ import { useModalActions } from "@/stores/modalStore";
 import { MODAL_NAMES } from "@/constants/modalNames";
 import { EmptyPlaceholder } from "@/components/uikit/EmptyPlaceholder/EmptyPlaceholder";
 import { Card, CardContent, CardMedia } from "@mui/material";
+import { useGetUserPortfoliosQuery } from "@/services/portfolios/useGetUserPortfoliosQuery";
 
-export const PortfolioGrid = ({ items }) => {
+export const PortfolioGrid = () => {
   const { setActiveModal } = useModalActions();
+
+  const { data: items } = useGetUserPortfoliosQuery();
 
   return (
     <>

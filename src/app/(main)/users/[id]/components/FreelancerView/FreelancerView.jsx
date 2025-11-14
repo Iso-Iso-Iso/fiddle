@@ -17,12 +17,19 @@ import { Button } from "@/components/uikit/Button/Button";
 import { CollapsableDescription } from "@/app/(main)/users/[id]/components/CollapsableDescription/CollapsableDescription";
 import { PortfolioGrid } from "@/app/(main)/users/[id]/components/PortfolioGrid/PortfolioGrid";
 import { TestimonialCard } from "@/app/(main)/users/[id]/components/TestimonialCard/TestimonialCard";
+import { getQueryClient } from "@/utils/getQueryClient";
+import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 
 export const FreelancerView = async ({ user, isEditable }) => {
-  const portfolios = await getUserPortfolios({ userId: user.id });
+  const queryClient = getQueryClient();
+
+  await queryClient.prefetchQuery({
+    queryFn: () => getUserPortfolios({ userId: user.id }),
+    queryKey: ["test"],
+  });
 
   return (
-    <>
+    <HydrationBoundary state={dehydrate(queryClient)}>
       <ProfileInfo>
         <Avatar variant="profile" />
         <PersonalInfo>
@@ -48,7 +55,7 @@ export const FreelancerView = async ({ user, isEditable }) => {
         )}
       </ProfileInfo>
       {user.description && <CollapsableDescription text={user.description} />}
-      <PortfolioGrid items={portfolios} />
+      <PortfolioGrid />
       <Typography variant="h4" text="Testimonials" />
       <TestimonialsCard>
         {Array(6)
@@ -57,6 +64,6 @@ export const FreelancerView = async ({ user, isEditable }) => {
             <TestimonialCard key={i} />
           ))}
       </TestimonialsCard>
-    </>
+    </HydrationBoundary>
   );
 };

@@ -23,5 +23,5 @@ export const userSettingsResolver = valibotResolver(userSettingsSchema);
 export const getUserSettingsDefaultValues = (user) => ({
   [USER_FORM_FIELDS.FIRST_NAME]: user.firstName,
   [USER_FORM_FIELDS.LAST_NAME]: user.lastName,
-  [USER_FORM_FIELDS.DESCRIPTION]: user.description,
+  [USER_FORM_FIELDS.DESCRIPTION]: user.description || "",
 });

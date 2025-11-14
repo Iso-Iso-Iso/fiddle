@@ -1,6 +1,5 @@
 "use client";
 import { Box, styled } from "@mui/material";
-import theme from "@/theme";
 
 export const Fiddles = styled(Box)(({ theme }) => ({
   display: "flex",
@@ -25,14 +24,4 @@ export const SidebarProfile = styled(Box)(({ theme }) => ({
   justifyContent: "center",
   alignItems: "center",
   gap: theme.spacing(2),
-}));
-
-export const FiddleWrapper = styled(Box)({
-  flex: 1,
-});
-
-export const PaginationWrapper = styled(Box)(({ theme }) => ({
-  display: "flex",
-  justifyContent: "center",
-  marginBottom: theme.spacing(2),
 }));
