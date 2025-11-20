@@ -29,8 +29,8 @@ export const LoginForm = ({ onSubmit }) => {
     <FormWrapper>
       <Inputs>
         <Typography align="center" variant="h6" text="Login" />
-        <Input label="Email" control={control} name="email" />
-        <Input label="Password" control={control} name="password" />
+        <Input  label="Email" control={control} name="email" />
+        <Input  label="Password" control={control} name="password" />
       </Inputs>
       <Button
         text="Continue"
