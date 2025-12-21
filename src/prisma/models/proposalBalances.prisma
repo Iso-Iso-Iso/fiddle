@@ -1,0 +1,6 @@
+model ProposalBalances {
+  id     String @id @default(cuid())
+  amount Int
+  userId String @unique
+  user   Users  @relation(fields: [userId], references: [id])
+}

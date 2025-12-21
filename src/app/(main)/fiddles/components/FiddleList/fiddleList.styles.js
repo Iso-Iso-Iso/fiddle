@@ -20,6 +20,7 @@ export const Filters = styled(Box)(({ theme }) => ({
   gridTemplateColumns: "200px 200px 1fr 60px",
   gap: theme.spacing(2),
   alignItems: "center",
+  marginBottom: theme.spacing(2),
 }));
 
 export const Search = styled(Box)(({ theme }) => ({

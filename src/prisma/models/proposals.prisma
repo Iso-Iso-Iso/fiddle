@@ -1,0 +1,15 @@
+model Proposals {
+  id             String           @id @default(cuid())
+  userId         String
+  fiddleId       String
+  greeting       String?          @db.TinyText()
+  withdrawAmount Int
+  user           Users            @relation(fields: [userId], references: [id])
+  fiddle         Fiddles          @relation(fields: [fiddleId], references: [id])
+  status         ProposalStatuses @default(ACTIVE)
+}
+
+enum ProposalStatuses {
+  ACTIVE
+  REFOUNDED
+}

@@ -1,1 +1,1 @@
-export { UserRole } from "@/generated/prisma/client";
+export { UserRole, ProposalStatuses } from "@/generated/prisma/client";

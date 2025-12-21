@@ -12,7 +12,6 @@ const handle = async (form) => {
     description: form[USER_FORM_FIELDS.DESCRIPTION],
   };
 
-  console.log(user);
   const updated = await updateUserById(userId, user);
 };
 

@@ -10,16 +10,13 @@ import { Avatar } from "@/components/uikit/Avatar/Avatar";
 import { TextEditViewer } from "@/components/TextEditViewer/TextEditViewer";
 import { IconButton } from "@/components/uikit/IconLink/IconButton";
 import Link from "next/link";
-import { useModalActions } from "@/stores/modalStore";
-import { MODAL_NAMES } from "@/constants/modalNames";
 
-export const FiddleItem = ({ fiddle, isEditable }) => {
-  const { setActiveModal } = useModalActions();
+export const FiddleItem = ({ fiddle, isEditable, onFiddleClick }) => {
   const handlePropagation = (e) => e.stopPropagation();
 
   return (
     <ProposalItemWrapper
-      onClick={() => setActiveModal(MODAL_NAMES.FIDDLE_DRAWER, { fiddle })}
+      onClick={onFiddleClick }
     >
       <Heading>
         <Link onClick={handlePropagation} href={`/fiddles/${fiddle.id}`}>

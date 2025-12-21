@@ -18,6 +18,9 @@ import {
 } from "@/validation/fiddleFilters.schema";
 import { Input } from "@/components/uikit/Input/Input";
 import { Dropdown } from "@/components/uikit/Dropdown/Dropdown";
+import { useModalActions } from "@/stores/modalStore";
+import { MODAL_NAMES } from "@/constants/modalNames";
+import { EmptyPlaceholder } from "@/components/uikit/EmptyPlaceholder/EmptyPlaceholder";
 
 const sortType = [
   { value: "latest", label: "Latest" },
@@ -35,12 +38,16 @@ export const FiddleList = ({ userId }) => {
   const { control, watch } = useForm({
     defaultValues: filters,
   });
+  const { setActiveModal } = useModalActions();
 
   const {
     data: { fiddles, pageCount },
   } = useGetFiddlesQuery({ page: 1, filters });
 
   const handleFilterApply = (body) => setFilters(body);
+
+  const handleFiddleClick = (fiddle) => () =>
+    setActiveModal(MODAL_NAMES.FIDDLE_DRAWER, { fiddle });
 
   return (
     <List>
@@ -67,15 +74,19 @@ export const FiddleList = ({ userId }) => {
         </Search>
         <Button text="Apply" onClick={handleFilterApply} />
       </Filters>
-      <FiddleWrapper>
-        {fiddles.map((item) => (
-          <FiddleItem
-            key={item.id}
-            fiddle={item}
-            isEditable={item.user.id === userId}
-          />
-        ))}
-      </FiddleWrapper>
+      {!!fiddles?.length && (
+        <FiddleWrapper>
+          {fiddles.map((item) => (
+            <FiddleItem
+              key={item.id}
+              fiddle={item}
+              isEditable={item.user.id === userId}
+              onFiddleClick={handleFiddleClick(item)}
+            />
+          ))}
+        </FiddleWrapper>
+      )}
+      {!fiddles?.length && <EmptyPlaceholder />}
       <PaginationWrapper>
         <Pagination count={pageCount} />
       </PaginationWrapper>

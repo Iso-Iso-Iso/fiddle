@@ -1,13 +1,15 @@
 model Users {
-  id          String       @id @default(cuid())
-  email       String       @unique
-  firstName   String
-  lastName    String
-  password    String
-  role        UserRole
-  description String?      @db.Text
-  fiddles     Fiddles[]
-  portfolios  Portfolios[]
+  id              String            @id @default(cuid())
+  email           String            @unique
+  firstName       String
+  lastName        String
+  password        String
+  role            UserRole
+  description     String?           @db.Text
+  fiddles         Fiddles[]
+  portfolios      Portfolios[]
+  proposals       Proposals[]
+  proposalBalance ProposalBalances?
 }
 
 enum UserRole {

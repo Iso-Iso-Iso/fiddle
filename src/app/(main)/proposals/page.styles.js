@@ -3,7 +3,5 @@
 import { Box, styled } from "@mui/material";
 
 export const Wrapper = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(2),
-  width: 600,
-  height: "100%",
+  padding: theme.spacing(4),
 }));
