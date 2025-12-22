@@ -7,8 +7,6 @@ import { Editor } from "slate";
 export const EditorButton = ({ variant, editor }) => {
   const slate = useSlate();
 
-  console.log(editor, "editor");
-
   const handleClick = (e) => {
     if (Editor.marks(slate)?.bold) {
       Editor.removeMark(slate, variant);

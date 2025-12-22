@@ -9,7 +9,7 @@ import NavLink from "next/link";
 export const FiddleCard = ({ fiddle }) => {
   return (
     <Card variant="outlined">
-      <CardMedia image={fiddle.images[0].url} />
+      {!!fiddle.images.length && <CardMedia image={fiddle.images[0].url} />}
       <CardContent>
         <Typography text={fiddle.name} variant="h6" />
         <Typography

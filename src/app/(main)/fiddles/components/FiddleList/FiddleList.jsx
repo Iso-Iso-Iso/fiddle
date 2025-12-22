@@ -33,7 +33,7 @@ const filterType = [
   { value: "approved", label: "Approved" },
 ];
 
-export const FiddleList = ({ userId }) => {
+export const FiddleList = ({ userId, isSubmitAllowed }) => {
   const [filters, setFilters] = useState(fiddleFiltersDefaultValues);
   const { control, watch } = useForm({
     defaultValues: filters,
@@ -47,7 +47,7 @@ export const FiddleList = ({ userId }) => {
   const handleFilterApply = (body) => setFilters(body);
 
   const handleFiddleClick = (fiddle) => () =>
-    setActiveModal(MODAL_NAMES.FIDDLE_DRAWER, { fiddle });
+    setActiveModal(MODAL_NAMES.FIDDLE_DRAWER, { fiddle, isSubmitAllowed });
 
   return (
     <List>

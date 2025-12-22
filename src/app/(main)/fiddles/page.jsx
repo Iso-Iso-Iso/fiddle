@@ -42,7 +42,10 @@ const Page = async ({ searchParams }) => {
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
       <Fiddles>
-        <FiddleList userId={user.id} />
+        <FiddleList
+          userId={user.id}
+          isSubmitAllowed={user.role === UserRole.FREELANCER}
+        />
         {user && (
           <SideBar>
             <SidebarProfile>

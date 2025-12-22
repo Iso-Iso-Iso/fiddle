@@ -17,9 +17,3 @@ export const ProposalWrapper = styled(Box)({
   marginTop: theme.spacing(2),
 });
 
-export const WithdrawProposals = styled(Box)(({ theme }) => ({
-  display: "grid",
-  gridTemplateColumns: "minmax(0, 1fr) auto",
-  alignItems: "center",
-  gap: theme.spacing(1),
-}));
