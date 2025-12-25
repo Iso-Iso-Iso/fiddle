@@ -13,7 +13,7 @@ import { getFiddlesByUserId } from "@/services/fiddle/getFiddlesByUserId";
 import { FiddleCard } from "../FiddleCard/FiddleCard";
 
 export const EmployerView = async ({ user, isEditable }) => {
-  const fiddles = await getFiddlesByUserId(user.id);
+  const fiddles = await getFiddlesByUserId({ userId: user.id });
 
   return (
     <>

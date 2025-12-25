@@ -24,7 +24,10 @@ const Layout = async ({ children }) => {
               <Link href="/" text="Home" />
               <Link href="/fiddles" text="Fiddles" />
               {authorizedUser && authorizedUser?.role === UserRole.EMPLOYER && (
-                <Link href="/fiddles/create" text="Create fiddle" />
+                <>
+                  <Link href="/fiddles/create" text="Create Fiddle" />
+                  <Link href="/my-fiddles" text="My Fiddles" />
+                </>
               )}
               {authorizedUser &&
                 authorizedUser?.role === UserRole.FREELANCER && (

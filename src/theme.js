@@ -7,4 +7,9 @@ const theme = createTheme({
   },
 });
 
+export const sideScaleTransition = theme.transitions.create("transform", {
+  easing: theme.transitions.easing.sharp,
+  duration: theme.transitions.duration.shorter,
+})
+
 export default theme;

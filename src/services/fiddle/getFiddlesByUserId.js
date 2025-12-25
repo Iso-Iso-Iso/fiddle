@@ -1,11 +1,14 @@
 import "server-only";
 import { prismaClient } from "@/prisma/prisma";
 
-export const getFiddlesByUserId = async (userId) => {
+const PER_PAGE = 20;
+
+export const getFiddlesByUserId = async ({ userId, page = 1 }) => {
   const fiddles = await prismaClient.fiddles.findMany({
-    take: 10,
+    take: PER_PAGE,
     where: { userId },
     include: { images: true },
+    skip: (page - 1) * PER_PAGE,
   });
 
   return fiddles.map((fiddle) => {
