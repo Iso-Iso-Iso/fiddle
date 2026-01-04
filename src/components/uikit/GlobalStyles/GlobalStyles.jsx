@@ -10,6 +10,7 @@ export const GlobalStyles = () => {
         },
         html: {
           height: "100%",
+          containerType: "inline-size",
         },
       }}
     />

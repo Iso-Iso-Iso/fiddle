@@ -1,5 +1,5 @@
 import React from "react";
-import MButton from "@mui/material/Button";
+import { StyledButton } from "./button.styles";
 
 export const Button = ({
   text,
@@ -12,7 +12,7 @@ export const Button = ({
   href,
 }) => {
   return (
-    <MButton
+    <StyledButton
       href={href}
       variant={variant}
       color={color}
@@ -22,6 +22,6 @@ export const Button = ({
       loading={loading}
     >
       {text}
-    </MButton>
+    </StyledButton>
   );
 };
