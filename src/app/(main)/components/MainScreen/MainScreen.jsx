@@ -5,12 +5,12 @@ import {
   MainScreenBackground,
   StatisticItem,
   Statistics,
+  StyledImage,
   Wrapper,
 } from "./mainScreen.styles";
 import { Typography } from "@/components/uikit/Typography/Typography";
 import { Container } from "@/components/uikit/Container/Container";
 import { SearchBar } from "@/app/(main)/components/SearchBar/SearchBar";
-import Image from "next/image";
 import { AchievementLabel } from "@/app/(main)/components/AchievementLabel/AchievementLabel";
 
 const statisticMap = [
@@ -63,7 +63,7 @@ export const MainScreen = () => {
             </Statistics>
           </ContentPart>
           <ImagePart>
-            <Image
+            <StyledImage
               src="/main/mainScreenLabel.png"
               height="580"
               width="660"

@@ -2,12 +2,12 @@ import React from "react";
 import {
   GuidelineItem,
   GuidelineWrapper,
-  Heading,
   Wrapper,
 } from "@/app/(main)/components/GuidelineSection/guidelineSection.styles";
 import { Container } from "@/components/uikit/Container/Container";
 import { Typography } from "@/components/uikit/Typography/Typography";
 import { Icon } from "@/components/uikit/Icon/Icon";
+import { Heading } from "@/components/Heading/Heading";
 
 const guidelineItemsMap = [
   {
@@ -40,13 +40,10 @@ export const GuidelineSection = () => {
   return (
     <Wrapper>
       <Container>
-        <Heading>
-          <Typography text="Need something done?" variant="h4" />
-          <Typography
-            text="Most viewed and all-time top-selling services"
-            variant="subtitle1"
-          />
-        </Heading>
+        <Heading
+          title="Need something done?"
+          subtitle="Most viewed and all-time top-selling services"
+        />
         <GuidelineWrapper>
           {guidelineItemsMap.map((item) => (
             <GuidelineItem key={item.title}>

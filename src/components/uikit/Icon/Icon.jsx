@@ -14,8 +14,9 @@ import GppGoodIcon from "@mui/icons-material/GppGood";
 import PersonIcon from "@mui/icons-material/Person";
 import PostAddIcon from "@mui/icons-material/PostAdd";
 import PersonSearchIcon from "@mui/icons-material/PersonSearch";
-import PaymentIcon from '@mui/icons-material/Payment';
-import SupportAgentIcon from '@mui/icons-material/SupportAgent';
+import PaymentIcon from "@mui/icons-material/Payment";
+import SupportAgentIcon from "@mui/icons-material/SupportAgent";
+import StarIcon from "@mui/icons-material/Star";
 
 const iconMap = {
   edit: EditIcon,
@@ -35,11 +36,13 @@ const iconMap = {
   personSearch: PersonSearchIcon,
   payment: PaymentIcon,
   supportAgent: SupportAgentIcon,
+  star: StarIcon,
 };
 
 const colorMap = {
   primary: "primary",
   secondary: "secondary",
+  warning: "warning",
 };
 
 export const Icon = ({ name, size = 20, color }) => {

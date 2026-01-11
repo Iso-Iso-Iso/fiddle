@@ -20,12 +20,16 @@ export const Wrapper = styled(Box)(({ theme, variant }) => ({
   backgroundColor: theme.palette.common.white,
   padding: `${theme.spacing(1)} ${theme.spacing(2)}`,
   position: "absolute",
+  width: "max-content",
   left: positionByVariant[variant].left,
   top: positionByVariant[variant].top,
   borderRadius: theme.shape.labelRadius,
   display: "inline-flex",
   alignItems: "center",
   gap: theme.spacing(2),
+  "@media (max-width: 1000px)": {
+    display: "none",
+  },
 }));
 
 export const IconBackground = styled(Box)(({ theme }) => ({

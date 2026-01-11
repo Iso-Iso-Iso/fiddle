@@ -4,13 +4,14 @@ import {
   HeaderWrapper,
   MenuWrapper,
   NavigationWrapper,
-} from "@/app/(main)/layout.styles";
+} from "./layout.styles";
 import { Container } from "@mui/material";
 import { Link } from "@/components/uikit/Link/Link";
 import { Button } from "@/components/uikit/Button/Button";
 import { logoutUserAction } from "@/actions/auth/logoutUserAction";
 import { getAuthorizedUser } from "@/services/users/getAuthorizedUser";
 import { UserRole } from "@/prisma/enums";
+import { Footer } from "@/app/(main)/components/Footer/Footer";
 
 const Layout = async ({ children }) => {
   const authorizedUser = await getAuthorizedUser();
@@ -49,6 +50,7 @@ const Layout = async ({ children }) => {
         </Container>
       </HeaderWrapper>
       <Container>{children}</Container>
+      <Footer />
     </>
   );
 };

@@ -5,6 +5,7 @@ import { styled } from "@mui/material";
 const avatarMap = {
   small: 32,
   profile: 102,
+  card: 90
 };
 
 export const AvatarCircle = styled(MuiAvatar)(({ theme, variant }) => ({
