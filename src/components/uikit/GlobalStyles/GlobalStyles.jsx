@@ -6,7 +6,7 @@ export const GlobalStyles = () => {
     <MuiGlobalStyles
       styles={{
         body: {
-          height: "100%",
+          miHeight: "100%",
         },
         html: {
           height: "100%",

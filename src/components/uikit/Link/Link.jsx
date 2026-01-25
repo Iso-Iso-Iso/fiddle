@@ -1,6 +1,7 @@
 import React from "react";
-import MuiLink from "@mui/material/Link";
+
 import NextLink from "next/link";
+import { StyledLink } from "./link.styles";
 
 const linkMap = {
   link: NextLink,
@@ -17,13 +18,14 @@ export const Link = ({
   const LinkComponent = linkMap[type];
 
   return (
-    <MuiLink
+    <StyledLink
       component={LinkComponent}
       color={color}
       href={href}
+      underline="none"
       onClick={onClick}
     >
       {text}
-    </MuiLink>
+    </StyledLink>
   );
 };
