@@ -8,14 +8,7 @@ import {
 } from "@/app/(main)/components/CategoriesGrid/categoriesGrid.styles";
 import { Heading } from "@/components/Heading/Heading";
 import { Typography } from "@/components/uikit/Typography/Typography";
-
-const categories = [
-  { title: "Development & IT", thumbnailName: "programmingThumbnail" },
-  { title: "Design & Creative", thumbnailName: "designThumbnail" },
-  { title: "Digital & Marketing", thumbnailName: "marketingThumbnail" },
-  { title: "Writing & Translation", thumbnailName: "writingThumbnail" },
-  { title: "Music & Audio", thumbnailName: "musicThumbnail" },
-];
+import { PUBLIC_CATEGORIES } from "@/constants/publicCategories";
 
 export const CategoriesGrid = () => {
   return (
@@ -25,7 +18,7 @@ export const CategoriesGrid = () => {
         subtitle="Get some Inspirations from 1800+ skills"
       />
       <CardGrid>
-        {categories.map((item) => (
+        {PUBLIC_CATEGORIES.map((item) => (
           <CardItem key={item.title}>
             <CardImage
               src={`/categories/${item.thumbnailName}.jpg`}

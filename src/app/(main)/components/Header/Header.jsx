@@ -24,6 +24,7 @@ export const Header = ({ authorizedUser }) => {
           <NavigationWrapper>
             <Link href="/" text="Home" />
             <Link href="/fiddles" text="Fiddles" />
+            <Link href="/freelancers" text="Freelancers" />
             {authorizedUser && authorizedUser?.role === UserRole.EMPLOYER && (
               <>
                 <Link href="/fiddles/create" text="Create Fiddle" />

@@ -4,7 +4,14 @@ import { FormControl, MenuItem, Select } from "@mui/material";
 import { useController } from "react-hook-form";
 import { StyledInputLabel } from "./dropdown.styles";
 
-export const Dropdown = ({ control, name, items, label }) => {
+export const Dropdown = ({
+  control,
+  name,
+  items,
+  label,
+  valueField = "value",
+  labelField = "label",
+}) => {
   const labelId = useId();
   const {
     field: { value, onChange },
@@ -23,8 +30,8 @@ export const Dropdown = ({ control, name, items, label }) => {
         onChange={onChange}
       >
         {items.map((item) => (
-          <MenuItem key={item.value} value={item.value}>
-            {item.label}
+          <MenuItem key={item[valueField]} value={item[valueField]}>
+            {item[labelField]}
           </MenuItem>
         ))}
       </Select>
