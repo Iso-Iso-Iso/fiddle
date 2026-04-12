@@ -1,5 +1,5 @@
-import MuiTextField from "@mui/material/TextField";
 import { useController } from "react-hook-form";
+import { StyledTextField } from "./input.styles";
 
 export const Input = ({ label, size = "small", control, name, inputType }) => {
   const {
@@ -19,7 +19,7 @@ export const Input = ({ label, size = "small", control, name, inputType }) => {
   };
 
   return (
-    <MuiTextField
+    <StyledTextField
       fullWidth
       label={label}
       size={size}
@@ -29,3 +29,4 @@ export const Input = ({ label, size = "small", control, name, inputType }) => {
     />
   );
 };
+

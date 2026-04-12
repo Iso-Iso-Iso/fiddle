@@ -1,8 +1,8 @@
 "use client";
 import React, { useId } from "react";
-import { FormControl, MenuItem, Select } from "@mui/material";
+import { FormControl, MenuItem } from "@mui/material";
 import { useController } from "react-hook-form";
-import { StyledInputLabel } from "./dropdown.styles";
+import { StyledInputLabel, StyledSelect } from "./dropdown.styles";
 
 export const Dropdown = ({
   control,
@@ -22,19 +22,20 @@ export const Dropdown = ({
       <StyledInputLabel size="small" id={labelId}>
         {label}
       </StyledInputLabel>
-      <Select
+      <StyledSelect
         variant="outlined"
         labelId={labelId}
         value={value}
         size="small"
         onChange={onChange}
       >
+
         {items.map((item) => (
           <MenuItem key={item[valueField]} value={item[valueField]}>
             {item[labelField]}
           </MenuItem>
         ))}
-      </Select>
+      </StyledSelect>
     </FormControl>
   );
 };
