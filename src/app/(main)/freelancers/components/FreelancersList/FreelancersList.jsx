@@ -9,6 +9,7 @@ import {
   PaginationWrapper,
   FreelancerName,
   FilterGrid,
+  ActionsButtons,
 } from "./freelancersList.styles";
 import { Avatar } from "@/components/uikit/Avatar/Avatar";
 import { Typography } from "@/components/uikit/Typography/Typography";
@@ -58,6 +59,10 @@ export const FreelancersList = () => {
                 <Icon name="star" color="warning" />
               </InfoWrapper>
               <Typography text="Lorem ipsum dolo set amet..." />
+              <ActionsButtons>
+                <Button text="Contact" variant="text" size="small" />
+                <Button text="View" size="small" />
+              </ActionsButtons>
             </FreelancerCardContent>
           </FreelancerCardItem>
         ))}

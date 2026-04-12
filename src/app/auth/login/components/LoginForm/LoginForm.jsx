@@ -14,7 +14,7 @@ import {
 } from "@/validation/login.schema";
 import { loginUserAction } from "@/actions/auth/loginUserAction";
 
-export const LoginForm = ({ onSubmit }) => {
+export const LoginForm = () => {
   const { control, handleSubmit } = useForm({
     resolver: loginSchemaResolver,
     defaultValues: loginDefaultValues,

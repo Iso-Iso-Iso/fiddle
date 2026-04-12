@@ -28,7 +28,7 @@ export const FreelancerCardContent = styled(CardContent)(({ theme }) => ({
   display: "flex",
   flexDirection: "column",
   gap: theme.spacing(1),
-  padding: theme.spacing(1),
+  padding: `${theme.spacing(1)} !important`,
 }));
 
 export const FreelancerImage = styled(Image)(({ theme }) => ({
@@ -46,6 +46,11 @@ export const InfoWrapper = styled(Box)(({ theme }) => ({
 export const FreelancerName = styled(Box)({
   marginRight: "auto",
 });
+
+export const ActionsButtons = styled(Box)(({ theme }) => ({
+  display: "flex",
+  justifyContent: "space-between",
+}));
 
 export const PaginationWrapper = styled(Box)({
   display: "flex",

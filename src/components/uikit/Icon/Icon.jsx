@@ -17,6 +17,7 @@ import PersonSearchIcon from "@mui/icons-material/PersonSearch";
 import PaymentIcon from "@mui/icons-material/Payment";
 import SupportAgentIcon from "@mui/icons-material/SupportAgent";
 import StarIcon from "@mui/icons-material/Star";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const iconMap = {
   edit: EditIcon,
@@ -37,6 +38,7 @@ const iconMap = {
   payment: PaymentIcon,
   supportAgent: SupportAgentIcon,
   star: StarIcon,
+  expandMore: ExpandMoreIcon,
 };
 
 const colorMap = {

@@ -37,6 +37,8 @@ export const Header = ({ authorizedUser }) => {
             {authorizedUser && (
               <Link href={`/users/${authorizedUser.id}`} text="My Profile" />
             )}
+            <Link href="/questions" text="Q&A" />
+            <Link href="/terms" text="Term of services" />
           </NavigationWrapper>
           {authorizedUser ? (
             <Button color="error" text="Log out" onClick={logoutUserAction} />
